@@ -1,0 +1,86 @@
+﻿@model IEnumerable<StarWars.Models.Planet>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Planets</h1>
+<div>
+    <form method="post">
+        <div>
+            <label for="pageNumber">Enter A Page Number</label>
+            <input type="text" name="pageNumber" value="" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="index" />
+        </div>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rotation_period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orbital_period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.diameter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.climate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gravity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.terrain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.surface_water)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.population)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rotation_period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orbital_period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diameter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.climate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gravity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.terrain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.surface_water)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.population)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
