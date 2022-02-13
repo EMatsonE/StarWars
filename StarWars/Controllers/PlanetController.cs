@@ -16,11 +16,15 @@ namespace StarWars.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            string apiUri = "https://swapi.dev/api/planets/";
+            string apiUri = $"https://swapi.dev/api/planets";
             var apiTask = apiUri.GetJsonAsync<Results>();
             apiTask.Wait();
             _planetCollection = apiTask.Result.results;
-            apiTask.Wait();
+
+            int resultCount = apiTask.Result.count;
+            int resultsPerPage = _planetCollection.Count();
+            int pagesAvalable = resultCount / resultsPerPage;
+            ViewBag.pagesAvalable = pagesAvalable;
 
             _planetCollection = apiTask.Result.results;
 
@@ -30,14 +34,14 @@ namespace StarWars.Controllers
         [HttpPost]
         public ActionResult Index(string pageNumber = "1")
         {
-
-            string apiUri = $"https://swapi.dev/api/planets/?page={pageNumber}";
+            string apiUri = $"https: //swapi.dev/api/planets/?page={pageNumber}";
             var apiTask = apiUri.GetJsonAsync<Results>();
             apiTask.Wait();
             _planetCollection = apiTask.Result.results;
 
-            return View(_planetCollection);        
+            return View(_planetCollection);
         }
+
         // GET: PlanetController/Details/5
         public ActionResult Details(int id)
         {

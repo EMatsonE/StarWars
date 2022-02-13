@@ -8,5 +8,6 @@ namespace StarWars.Models
     public class Results
     {
         public List<Planet> results { get; set; }
+        public int count { get; set; }
     }
 }

@@ -7,15 +7,12 @@
 
 <h1>Planets</h1>
 <div>
-    <form method="post">
-        <div>
-            <label for="pageNumber">Enter A Page Number</label>
-            <input type="text" name="pageNumber" value="" />
-        </div>
-        <div>
-            <input type="submit" value="Submit" class="index" />
-        </div>
-    </form>
+    @for (var counter = 1; counter < ViewBag.pagesAvalable + 1; counter++)
+    {
+        <a asp-action="Index" asp-route-pageNumber="@counter">
+            @counter
+        </a>
+    }
 </div>
 <table class="table">
     <thead>
